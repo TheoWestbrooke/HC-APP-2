@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HC Debt Model App</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="app-header">
+  <div class="title-wrap">
+    <img src="logo.png" alt="App Logo" class="app-logo">
+    <div>
+      <p class="eyebrow">Debt-only model</p>
+      <h1 id="projectTitle">Debt Model</h1>
+      <p id="updatedDate" class="subtitle"></p>
+    </div>
+  </div>
+  <div class="actions">
+    <button id="shareBtn" type="button">Copy scenario link</button>
+    <button id="exportBtn" type="button">Export CSV</button>
+    <button id="exportExcelBtn" type="button">Export Excel</button>
+    <button id="resetBtn" type="button" class="secondary">Reset</button>
+  </div>
+</header>
+<nav class="tabs" aria-label="App sections">
+  <button class="tab active" data-section="dashboard">Dashboard</button>
+  <button class="tab" data-section="inputs">Inputs</button>
+  <button class="tab" data-section="debt">Debt schedule</button>
+</nav>
+<main>
+<section id="dashboard" class="view active">
+  <div id="kpiCards" class="kpi-grid"></div>
+  <div class="grid-two">
+    <article class="panel">
+      <h2>Returns attribution</h2>
+      <div class="table-wrap"><table><thead><tr><th></th><th>IRR</th><th>MoM</th></tr></thead><tbody id="returnsBody"></tbody></table></div>
+    </article>
+    <article class="panel">
+      <h2>Visual summary</h2>
+      <div id="ebitdaChart" class="chart"></div>
+      <div id="cashChart" class="chart"></div>
+      <div id="westbrookeBalanceChart" class="chart"></div>
+    </article>
+  </div>
+  <article class="panel">
+    <h2>Dashboard</h2>
+    <div class="table-wrap"><table><thead id="dashboardHead"></thead><tbody id="dashboardBody"></tbody></table></div>
+  </article>
+</section>
+<section id="inputs" class="view">
+  <article class="panel intro-panel"><h2>Scenario inputs</h2><p>Adjust the key deal, timing, funding and fee assumptions for the current scenario. Percentages should be entered as whole percentages, so 12% is entered as 12.</p></article>
+  <div id="inputSections"></div>
+</section>
+<section id="debt" class="view">
+  <article class="panel"><h2>Debt schedule details</h2><div id="debtTables" class="debt-tables"></div></article>
+</section>
+</main>
+<div id="toast" role="status"></div>
+<script src="jszip.min.js"></script>
+<script src="model.js"></script>
+<script src="app.js"></script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}</script>
+</body>
+</html>
